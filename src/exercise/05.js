@@ -14,18 +14,86 @@ import '../box-styles.css'
 // 🐨 also use the style prop to make the font italic
 // 💰 Here are available style attributes: backgroundColor, fontStyle
 
-const smallBox = <div>small lightblue box</div>
-const mediumBox = <div>medium pink box</div>
-const largeBox = <div>large orange box</div>
+//*** Normal ***/
+// const smallBox = (
+//   <div
+//     className="box box--small"
+//     style={{backgroundColor: 'lightblue', fontStyle: 'italic'}}
+//   >
+//     small lightblue box
+//   </div>
+// )
+// const mediumBox = (
+//   <div
+//     className="box box--medium"
+//     style={{backgroundColor: 'pink', fontStyle: 'italic'}}
+//   >
+//     medium pink box
+//   </div>
+// )
+// const largeBox = (
+//   <div
+//     className="box box--large"
+//     style={{backgroundColor: 'orange', fontStyle: 'italic'}}
+//   >
+//     large orange box
+//   </div>
+// )
 
 function App() {
   return (
+    //*** Normal ***/
+    // <div>
+    //   {smallBox}
+    //   {mediumBox}
+    //   {largeBox}
+    // </div>
+    //*** Extra Credit 1 ***/
+    // <div>
+    //   <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
+    //     small lightblue box
+    //   </Box>
+    //   <Box className="box--medium" style={{backgroundColor: 'pink'}}>
+    //     medium pink box
+    //   </Box>
+    //   <Box className="box--large" style={{backgroundColor: 'orange'}}>
+    //     large orange box
+    //   </Box>
+    //   <Box>sizeless box</Box>
+    // </div>
+    /*** Extra Credit 2 ***/
     <div>
-      {smallBox}
-      {mediumBox}
-      {largeBox}
+      <Box size="small" style={{backgroundColor: 'lightblue'}}>
+        small lightblue box
+      </Box>
+      <Box size="medium" style={{backgroundColor: 'pink'}}>
+        medium pink box
+      </Box>
+      <Box size="large" style={{backgroundColor: 'orange'}}>
+        large orange box
+      </Box>
+      <Box>sizeless box</Box>
     </div>
   )
+}
+
+// *** Extra Credit 1 ***
+// function Box({style, className, ...additionalProps}) {
+//   const defaultProps = {
+//     className: `box ${className}`,
+//     style: {fontStyle: 'italic', ...style},
+//   }
+//   return <div {...defaultProps} {...additionalProps} />
+// }
+
+// *** Extra Credit 2 ***
+function Box({style, size, ...additionalProps}) {
+  const sizeClass = size ? `box--${size}` : ''
+  const defaultProps = {
+    className: `box ${sizeClass}`,
+    style: {fontStyle: 'italic', ...style},
+  }
+  return <div {...defaultProps} {...additionalProps} />
 }
 
 export default App
